@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.wbaizx:PopupView:1.0.0'
+	        compile 'com.github.wbaizx:PopupView:1.0.1'
 	}
 
 
@@ -26,7 +26,7 @@ Step 2. Add the dependency
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         att:arrayRes="@array/ar"
-        att:arrowDrawable="@drawable/ad"
+        att:rightDrawable="@drawable/ad"
         att:direction="down"
         att:heightLineWidth="0.5dp"
         att:hideSelected="false"
@@ -39,7 +39,7 @@ Step 2. Add the dependency
   解释一个各个参数作用
 
         arrayRes：注入数组资源
-        arrowDrawable：箭头图片资源
+        rightDrawable：箭头图片资源
         direction：弹出方向
         heightLineWidth：分割线高度
         hideSelected：是否隐藏当前选中项，默认false

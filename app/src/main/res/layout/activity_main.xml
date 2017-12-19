@@ -12,6 +12,7 @@
         android:layout_centerInParent="true"
         att:arrayRes="@array/languages"
         att:direction="down"
+        att:rightDrawable="@drawable/ic_launcher_foreground"
         att:heightLineWidth="0.5dp"
         att:hideSelected="true"
         att:maxNum="5"

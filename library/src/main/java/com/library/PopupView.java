@@ -113,8 +113,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         } else {
             popupDrawable = ContextCompat.getDrawable(getContext(), R.drawable.popupdrawable);
         }
-        if (typedArray.getDrawable(R.styleable.popup_attr_arrowDrawable) != null) {
-            popupview_img.setImageDrawable(typedArray.getDrawable(R.styleable.popup_attr_arrowDrawable));
+        if (typedArray.getDrawable(R.styleable.popup_attr_rightDrawable) != null) {
+            popupview_img.setImageDrawable(typedArray.getDrawable(R.styleable.popup_attr_rightDrawable));
         } else {
             popupview_img.setImageDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.popup_down));
         }
@@ -288,8 +288,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         this.hideSelected = hideSelected;
     }
 
-    public void setArrowDrawable(Drawable arrowDrawable) {
-        popupview_img.setImageDrawable(arrowDrawable);
+    public void setRightDrawable(Drawable rightDrawable) {
+        popupview_img.setImageDrawable(rightDrawable);
     }
 
     public void setNeedDivider(boolean needDivider) {

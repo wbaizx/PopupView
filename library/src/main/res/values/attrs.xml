@@ -4,7 +4,7 @@
         <attr name="maxNum" format="integer"></attr>
         <attr name="heightLineWidth" format="dimension"></attr>
         <attr name="popupDrawable" format="reference"></attr>
-        <attr name="arrowDrawable" format="reference"></attr>
+        <attr name="rightDrawable" format="reference"></attr>
         <attr name="menuRes" format="reference"></attr>
         <attr name="arrayRes" format="reference"></attr>
         <attr name="needDivider" format="boolean"></attr>
