@@ -11,20 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         att:arrayRes="@array/languages"
-        att:arrowDrawable="@drawable/ic_launcher_background"
         att:direction="down"
         att:heightLineWidth="0.5dp"
-        att:hideSelected="false"
+        att:hideSelected="true"
         att:maxNum="5"
         att:menuRes="@menu/a1"
-        att:needDivider="false"
-        att:popupDrawable="@drawable/ic_launcher_background">
+        att:needDivider="false"></com.library.PopupView>
 
-    </com.library.PopupView>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/popup"
-        android:layout_marginTop="20dp" />
 </RelativeLayout>

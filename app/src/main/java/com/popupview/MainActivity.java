@@ -20,16 +20,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         popup = findViewById(R.id.popup);
-//        //-------1
-//        popup.addItems(new PoputItem("11"));
-//        popup.addItems(new PoputItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round)));
-//        popup.addItems(new PoputItem("22", ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round)));
-//        //-------2
-//        popup.setItemsFromMenu(this, R.menu.aaaa);
-//        //-------3
-//        List<String> stringList = new ArrayList<>();
-//        stringList.add("55");
-//        popup.setItemsFromList(stringList);
+        //-------1
+        popup.addItems(new PoputItem("11"));
+        popup.addItems(new PoputItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round)));
+        popup.addItems(new PoputItem("22", ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round)));
+        //-------2
+        popup.setItemsFromMenu(this, R.menu.aaaa);
+        //-------3
+        List<String> stringList = new ArrayList<>();
+        stringList.add("55");
+        popup.setItemsFromList(stringList);
 
         popup.setOnItemClickListener(new OnPopupItemClickListener() {
             @Override
