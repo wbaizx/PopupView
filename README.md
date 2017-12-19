@@ -2,6 +2,22 @@
 
 ![image](https://github.com/wbaizx/PopupView/raw/master/in.png)
 
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}Copy
+Step 2. Add the dependency
+
+	dependencies {
+	        compile 'com.github.wbaizx:PopupView:1.0.0'
+	}
+
+
 用法：
 
     <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res/com.popupview"
