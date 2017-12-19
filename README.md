@@ -32,8 +32,10 @@
         popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
   
   
-  其中所有参数也都可以通过代码设置
-  
+  xml中的各种参数设置同样都可以在代码中完成
+  介绍一下代码中的不同地方
+  
+  注入数据有三种方式：
   通过一项一项注入数据，其中PoputItem构造方法有三种，参见源码
   
         popup.addItems(new PoputItem("11"));
@@ -50,7 +52,7 @@
         stringList.add("55");
         popup.setItemsFromList(stringList);
         
-  设置默认选中项：
+  设置默认选中项，小于0或大于数据长度则默认选中第一项：
   
         popup.setPostion();
         
@@ -70,4 +72,4 @@
             }
         });
         
-  其他可设置参数同XML文件中对应
+
