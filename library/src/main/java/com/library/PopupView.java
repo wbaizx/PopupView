@@ -284,6 +284,14 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         this.popupDrawable = popupDrawable;
     }
 
+    public int getNowPosition() {
+        return nowPosition;
+    }
+
+    public String getNowText() {
+        return popupview_text.getText().toString();
+    }
+
     public void setHideSelected(boolean hideSelected) {
         this.hideSelected = hideSelected;
     }

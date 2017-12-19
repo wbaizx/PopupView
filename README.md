@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.wbaizx:PopupView:1.0.1'
+	        compile 'com.github.wbaizx:PopupView:1.0.2'
 	}
 
 
@@ -73,6 +73,14 @@ Step 2. Add the dependency
   
         popup.setPostion();
         
+  获取当前选中位置
+  
+        popup.getNowPosition();
+
+  获取当前选中位置文本
+
+        popup.getNowText();
+
   设置点击监听，返回值如果对应项有id则返回对应id，没有返回-1，position表示在数据中的索引，title表示对应文本信息
 
         popup.setOnItemClickListener(new OnPopupItemClickListener() {
