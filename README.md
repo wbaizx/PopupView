@@ -1,5 +1,6 @@
 # PopupView
 
+![image](https://github.com/wbaizx/PopupView/raw/master/in.png)
 
 用法：
 
