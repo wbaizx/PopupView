@@ -2,8 +2,8 @@
 
 
 用法：
-    <com.library.PopupView 
-        xmlns:att="http://schemas.android.com/apk/res/com.popupview"
+
+    <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res/com.popupview"
         android:id="@+id/popup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,22 +16,20 @@
         att:maxNum="5"
         att:menuRes="@menu/a1"
         att:needDivider="false"
-        att:popupDrawable="@drawable/pd">
-
-    </com.library.PopupView>
+        att:popupDrawable="@drawable/pd"></com.library.PopupView>
     
     
   解释一个各个参数作用
 
-  arrayRes：注入数组资源
-  arrowDrawable：箭头图片资源
-  direction：弹出方向
-  heightLineWidth：分割线高度
-  hideSelected：是否隐藏当前选中项，默认false
-  maxNum：最大显示行数，默认包含屏幕能容纳所有
-  menuRes：menu资源注入
-  needDivider：是否需要分割线，默认true
-  popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
+        arrayRes：注入数组资源
+        arrowDrawable：箭头图片资源
+        direction：弹出方向
+        heightLineWidth：分割线高度
+        hideSelected：是否隐藏当前选中项，默认false
+        maxNum：最大显示行数，默认包含屏幕能容纳所有
+        menuRes：menu资源注入
+        needDivider：是否需要分割线，默认true
+        popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
   
   
   其中所有参数也都可以通过代码设置
