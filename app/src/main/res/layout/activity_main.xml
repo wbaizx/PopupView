@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.popupview.MainActivity">
+
+    <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res/com.popupview"
+        android:id="@+id/popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        att:arrayRes="@array/languages"
+        att:arrowDrawable="@drawable/ic_launcher_background"
+        att:direction="down"
+        att:heightLineWidth="0.5dp"
+        att:hideSelected="false"
+        att:maxNum="5"
+        att:menuRes="@menu/a1"
+        att:needDivider="false"
+        att:popupDrawable="@drawable/ic_launcher_background">
+
+    </com.library.PopupView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/popup"
+        android:layout_marginTop="20dp" />
+</RelativeLayout>

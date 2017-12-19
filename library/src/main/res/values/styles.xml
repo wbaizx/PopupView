@@ -1,0 +1,22 @@
+<resources>
+
+    <style name="dialog_style_down" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@animator/dialog_enter_down</item>
+        <item name="android:windowExitAnimation">@animator/dialog_exit_down</item>
+    </style>
+
+    <style name="dialog_style_up" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@animator/dialog_enter_up</item>
+        <item name="android:windowExitAnimation">@animator/dialog_exit_up</item>
+    </style>
+
+    <style name="dialog_style_left" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@animator/dialog_enter_left</item>
+        <item name="android:windowExitAnimation">@animator/dialog_exit_left</item>
+    </style>
+
+    <style name="dialog_style_right" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@animator/dialog_enter_right</item>
+        <item name="android:windowExitAnimation">@animator/dialog_exit_right</item>
+    </style>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="popup_attr">
+        <attr name="maxNum" format="integer"></attr>
+        <attr name="heightLineWidth" format="dimension"></attr>
+        <attr name="popupDrawable" format="reference"></attr>
+        <attr name="arrowDrawable" format="reference"></attr>
+        <attr name="menuRes" format="reference"></attr>
+        <attr name="arrayRes" format="reference"></attr>
+        <attr name="needDivider" format="boolean"></attr>
+        <attr name="hideSelected" format="boolean"></attr>
+        <attr name="direction">
+            <flag name="down" value="0"></flag>
+            <flag name="up" value="1"></flag>
+            <flag name="left" value="2"></flag>
+            <flag name="right" value="3"></flag>
+        </attr>
+    </declare-styleable>
+</resources>
