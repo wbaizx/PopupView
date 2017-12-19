@@ -49,10 +49,10 @@ Step 2. Add the dependency
         popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
   
   
-  xml中的各种参数设置同样都可以在代码中完成
-  介绍一下代码中的不同地方
-  
-  注入数据有三种方式：
+  xml中的各种参数设置同样都可以在代码中完成，介绍一下代码中的不同地方
+
+  注入数据有三种方式：
+
   通过一项一项注入数据，其中PoputItem构造方法有三种，参见源码
   
         popup.addItems(new PoputItem("11"));
@@ -74,7 +74,7 @@ Step 2. Add the dependency
         popup.setPostion();
         
   获取当前选中位置
-  
+
         popup.getNowPosition();
 
   获取当前选中位置文本
