@@ -20,7 +20,7 @@ Step 2. Add the dependency
 
 用法：
 
-    <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res/com.popupview"
+    <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res-auto"
         android:id="@+id/popup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

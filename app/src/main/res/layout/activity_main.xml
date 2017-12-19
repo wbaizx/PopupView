@@ -5,18 +5,18 @@
     android:layout_height="match_parent"
     tools:context="com.popupview.MainActivity">
 
-    <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res/com.popupview"
+    <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res-auto"
         android:id="@+id/popup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         att:arrayRes="@array/languages"
         att:direction="down"
-        att:rightDrawable="@drawable/ic_launcher_foreground"
         att:heightLineWidth="5dp"
         att:hideSelected="true"
         att:maxNum="5"
         att:menuRes="@menu/a1"
-        att:needDivider="false"></com.library.PopupView>
+        att:needDivider="false"
+        att:rightDrawable="@drawable/ic_launcher_foreground"></com.library.PopupView>
 
 </RelativeLayout>
