@@ -213,10 +213,10 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     private void listViewOnClick(int i) {
         popupWindow.dismiss();
+        if ((i >= nowPosition) && hideSelected) {
+            i++;
+        }
         if (onPopupItemClickListener != null) {
-            if ((i >= nowPosition) && hideSelected) {
-                i++;
-            }
             onPopupItemClickListener.onItemClickListener((int) list.get(i).get(Key.ID), i, (String) list.get(i).get(Key.TITLE));
         }
         setPostion(i);

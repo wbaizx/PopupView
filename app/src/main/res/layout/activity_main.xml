@@ -10,13 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        att:arrayRes="@array/languages"
+        att:arrayRes="@array/test3"
         att:direction="down"
         att:heightLineWidth="5dp"
         att:hideSelected="true"
-        att:maxNum="5"
-        att:menuRes="@menu/a1"
+        att:menuRes="@menu/test2"
         att:needDivider="false"
-        att:rightDrawable="@drawable/ic_launcher_foreground"></com.library.PopupView>
+        ></com.library.PopupView>
 
 </RelativeLayout>
