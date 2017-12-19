@@ -13,7 +13,7 @@
         att:arrayRes="@array/languages"
         att:direction="down"
         att:rightDrawable="@drawable/ic_launcher_foreground"
-        att:heightLineWidth="0.5dp"
+        att:heightLineWidth="5dp"
         att:hideSelected="true"
         att:maxNum="5"
         att:menuRes="@menu/a1"

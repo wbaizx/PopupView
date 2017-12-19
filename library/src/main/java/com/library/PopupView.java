@@ -204,8 +204,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         popupWindow.setBackgroundDrawable(popupDrawable);
 
         if ((maxNum > 0) && (maxNum < list.size())) {
-            //35控件高度 + 2paddingTop
-            popupWindow.setHeight(maxNum * (AndroidUtil.dp2px(getContext(), (float) 37) + listView.getDividerHeight()) - listView.getDividerHeight());
+            //38控件高度 + 2paddingTop
+            popupWindow.setHeight(maxNum * (AndroidUtil.dp2px(getContext(), (float) 40) + listView.getDividerHeight()) - listView.getDividerHeight());
         } else {
             popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         }
