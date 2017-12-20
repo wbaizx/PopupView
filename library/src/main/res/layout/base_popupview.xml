@@ -9,7 +9,9 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/popupview_img"
+        android:ellipsize="end"
         android:gravity="center_vertical"
+        android:maxLines="1"
         android:paddingLeft="5dp"
         android:textColor="@color/black"
         android:textSize="20dp" />

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         //-------1
         popup.addItems(new PoputItem("11"));
         popup.addItems(new PoputItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round)));
-        popup.addItems(new PoputItem("22", ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round)));
+        popup.addItems(new PoputItem("22222222222222222222222222222222222", ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round)));
         //-------2
         popup.setItemsFromMenu(this, R.menu.test1);
         //-------3
