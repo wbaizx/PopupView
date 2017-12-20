@@ -25,6 +25,7 @@ Step 2. Add the dependency
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@drawable/bg"
         att:arrayRes="@array/ar"
         att:rightDrawable="@drawable/ad"
         att:direction="down"
