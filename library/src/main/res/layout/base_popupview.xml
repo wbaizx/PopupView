@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:background="@drawable/pressed_bg"
+        android:layout_toLeftOf="@+id/popupview_img"
         android:gravity="center_vertical"
         android:paddingLeft="5dp"
         android:textColor="@color/black"

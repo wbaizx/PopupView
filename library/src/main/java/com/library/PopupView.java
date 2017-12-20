@@ -196,7 +196,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
                 listViewOnClick(i);
             }
         });
-        popupWindow = new PopupWindow(listView, popupview_text.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popupWindow = new PopupWindow(listView, getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setOnDismissListener(this);
         popupWindow.setElevation(15);

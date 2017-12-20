@@ -96,5 +96,3 @@ Step 2. Add the dependency
             public void onDismissListener() {
             }
         });
-        
-
