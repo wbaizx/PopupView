@@ -72,27 +72,26 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             mWidthMeasureSpec = widthMeasureSpec;
         } else {
             mWidthMeasureSpec = MeasureSpec.makeMeasureSpec(
-                    AndroidUtil.dp2px(getContext(), 210),
+                    AndroidUtil.dp2px(getContext(), 160),
                     MeasureSpec.AT_MOST);
         }
         if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY) {
             mHeightMeasureSpec = heightMeasureSpec;
         } else {
             mHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
-                    AndroidUtil.dp2px(getContext(), 35),
+                    AndroidUtil.dp2px(getContext(), 30),
                     MeasureSpec.AT_MOST);
         }
         super.onMeasure(mWidthMeasureSpec, mHeightMeasureSpec);
     }
 
     private void init(AttributeSet attrs) {
-        LayoutInflater.from(getContext()).inflate(R.layout.base_popupview, this);
+        LayoutInflater.from(getContext()).inflate(R.layout.base_popupview, this, true);
         popupview_text = findViewById(R.id.popupview_text);
         popupview_img = findViewById(R.id.popupview_img);
         list = new ArrayList<>();
         temporaryList = new ArrayList<>();
-        popupview_text.setOnClickListener(this);
-        popupview_img.setOnClickListener(this);
+        this.setOnClickListener(this);
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.popup_attr);
 

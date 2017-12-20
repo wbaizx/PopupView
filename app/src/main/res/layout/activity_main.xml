@@ -10,12 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@drawable/bg"
         att:arrayRes="@array/test3"
         att:direction="down"
         att:heightLineWidth="5dp"
         att:hideSelected="true"
         att:menuRes="@menu/test2"
-        att:needDivider="false"
-        ></com.library.PopupView>
+        att:needDivider="false"></com.library.PopupView>
 
 </RelativeLayout>
