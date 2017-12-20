@@ -12,11 +12,11 @@
         android:layout_centerInParent="true"
         android:background="@drawable/bg"
         att:arrayRes="@array/test3"
-        att:direction="down"
+        att:direction="up"
         att:heightLineWidth="5dp"
         att:hideSelected="true"
         att:menuRes="@menu/test2"
         att:needDivider="false"
-        att:textViewSize="50dp"></com.library.PopupView>
+        att:textViewSize="20dp"></com.library.PopupView>
 
 </RelativeLayout>

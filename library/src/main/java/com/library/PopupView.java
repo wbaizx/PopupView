@@ -158,27 +158,34 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     private void showPopup() {
         int[] location = new int[2];
-        popupview_text.getLocationOnScreen(location);
+        this.getLocationOnScreen(location);
         switch (direction) {
             case 0:
+                popupWindow.setWidth(getWidth());
                 popupWindow.setAnimationStyle(R.style.dialog_style_down);
-                popupWindow.showAsDropDown(popupview_text);
+                popupWindow.showAsDropDown(this);
                 break;
             case 1:
+                popupWindow.setWidth(getWidth());
                 popupWindow.setAnimationStyle(R.style.dialog_style_up);
-                popupWindow.showAtLocation(popupview_text, Gravity.NO_GRAVITY, location[0], location[1] - popupWindow.getHeight());
+                popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0], location[1] - popupWindow.getHeight());
                 break;
             case 2:
+                popupWindow.setWidth(400);
                 popupWindow.setAnimationStyle(R.style.dialog_style_left);
-                popupWindow.showAtLocation(popupview_text, Gravity.NO_GRAVITY, location[0] - popupWindow.getWidth(), location[1]);
+                popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] - 400,
+                        location[1] - (popupWindow.getHeight() - getHeight()) / 2);
                 break;
             case 3:
+                popupWindow.setWidth(400);
                 popupWindow.setAnimationStyle(R.style.dialog_style_right);
-                popupWindow.showAtLocation(popupview_text, Gravity.NO_GRAVITY, location[0] + popupview_text.getWidth(), location[1]);
+                popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] + getWidth(),
+                        location[1] - (popupWindow.getHeight() - getHeight()) / 2);
                 break;
             default:
+                popupWindow.setWidth(getWidth());
                 popupWindow.setAnimationStyle(R.style.dialog_style_down);
-                popupWindow.showAsDropDown(popupview_text);
+                popupWindow.showAsDropDown(this);
                 break;
         }
     }

@@ -2,14 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/aa"
-        android:title="33"></item>
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="11"></item>
     <item
         android:id="@+id/awefawe"
         android:icon="@mipmap/ic_launcher_round"
-        android:title="44"></item>
+        android:title="22"></item>
     <item
         android:id="@+id/weagae"
-        android:title="44"></item>
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="3333333333333333333333333333333"></item>
     <item
         android:id="@+id/aerg"
         android:icon="@mipmap/ic_launcher_round"
