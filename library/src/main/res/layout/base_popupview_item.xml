@@ -10,7 +10,7 @@
         android:id="@+id/popupview_item_img"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:paddingLeft="10dp" />
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/popupview_item_text"
