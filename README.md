@@ -33,6 +33,7 @@ Step 2. Add the dependency
         att:hideSelected="false"
         att:maxNum="5"
         att:menuRes="@menu/a1"
+        att:textViewSize="20dp"
         att:needDivider="false"
         att:popupDrawable="@drawable/pd"></com.library.PopupView>
     
@@ -48,7 +49,8 @@ Step 2. Add the dependency
         menuRes：menu资源注入
         needDivider：是否需要分割线，默认true
         popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
-  
+        textViewSize：PopupView字体大小，控件宽度能根据大小自适应，若在代码中使用set方法设置，则控件大小不能对应改变
+
   
   xml中的各种参数设置同样都可以在代码中完成，介绍一下代码中的不同地方
 

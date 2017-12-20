@@ -16,6 +16,7 @@
         att:heightLineWidth="5dp"
         att:hideSelected="true"
         att:menuRes="@menu/test2"
-        att:needDivider="false"></com.library.PopupView>
+        att:needDivider="false"
+        att:textViewSize="50dp"></com.library.PopupView>
 
 </RelativeLayout>

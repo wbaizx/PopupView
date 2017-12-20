@@ -9,6 +9,7 @@ import android.support.annotation.MenuRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,6 +46,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     private OnDismissListener onDismissListener;
     private Drawable popupDrawable;
     private int heightLineWidth;
+    private int textViewSize;
+    private int thisdpWidth;
     private int maxNum;
     private int nowPosition = 0;
     private int direction;
@@ -79,7 +82,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             mHeightMeasureSpec = heightMeasureSpec;
         } else {
             mHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
-                    AndroidUtil.dp2px(getContext(), 30),
+                    AndroidUtil.dp2px(getContext(), thisdpWidth),
                     MeasureSpec.AT_MOST);
         }
         super.onMeasure(mWidthMeasureSpec, mHeightMeasureSpec);
@@ -99,12 +102,19 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         if (menuResId != 0) {
             setItemsFromMenu((Activity) getContext(), menuResId);
         }
+
         int arrayResId = typedArray.getResourceId(R.styleable.popup_attr_arrayRes, 0);
         if (arrayResId != 0) {
             String[] stringArray = getResources().getStringArray(arrayResId);
             setItemsFromList(Arrays.asList(stringArray));
         }
+
         heightLineWidth = (int) typedArray.getDimension(R.styleable.popup_attr_heightLineWidth, 1);
+
+        textViewSize = (int) typedArray.getDimension(R.styleable.popup_attr_textViewSize, AndroidUtil.dp2px(getContext(), 20));
+        popupview_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, textViewSize);
+        thisdpWidth = (int) (AndroidUtil.px2dp(getContext(), textViewSize) * 1.4);
+
         maxNum = typedArray.getInt(R.styleable.popup_attr_maxNum, 0);
 
         if (typedArray.getDrawable(R.styleable.popup_attr_popupDrawable) != null) {
@@ -112,14 +122,19 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         } else {
             popupDrawable = ContextCompat.getDrawable(getContext(), R.drawable.popupdrawable);
         }
+
         if (typedArray.getDrawable(R.styleable.popup_attr_rightDrawable) != null) {
             popupview_img.setImageDrawable(typedArray.getDrawable(R.styleable.popup_attr_rightDrawable));
         } else {
             popupview_img.setImageDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.popup_down));
         }
+
         needDivider = typedArray.getBoolean(R.styleable.popup_attr_needDivider, true);
+
         hideSelected = typedArray.getBoolean(R.styleable.popup_attr_hideSelected, false);
+
         direction = typedArray.getInt(R.styleable.popup_attr_direction, 0);
+
         typedArray.recycle();
     }
 
@@ -309,6 +324,10 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     public void setMaxNum(int maxNum) {
         this.maxNum = maxNum;
+    }
+
+    public void setTextViewSize(int dptextViewSize) {
+        popupview_text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, dptextViewSize);
     }
 
     public void setDirection(int direction) {
