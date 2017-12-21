@@ -111,6 +111,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         }
 
         heightLineWidth = (int) typedArray.getDimension(R.styleable.popup_attr_heightLineWidth, 1);
+
         horizontalWidth = (int) typedArray.getDimension(R.styleable.popup_attr_horizontalWidth, 500);
 
         textViewSize = (int) typedArray.getDimension(R.styleable.popup_attr_textViewSize, AndroidUtil.dp2px(getContext(), 20));
@@ -213,10 +214,10 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     private void initPopupWindow() {
         popupAdapter = new PopupAdapter(getContext(), temporaryList);
         ListView listView = new ListView(getContext());
-        listView.setDividerHeight(AndroidUtil.dp2px(getContext(), heightLineWidth));
         if (!needDivider) {
             listView.setDivider(null);
         }
+        listView.setDividerHeight(AndroidUtil.dp2px(getContext(), heightLineWidth));
         listView.setAdapter(popupAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
