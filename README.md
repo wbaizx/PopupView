@@ -18,7 +18,17 @@ Step 2. Add the dependency
 	}
 
 
-用法：
+最简单用法：
+
+    <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg"
+        ></com.library.PopupView>
+
+其他参数用法：
 
     <com.library.PopupView xmlns:att="http://schemas.android.com/apk/res-auto"
         android:id="@+id/popup"
@@ -41,7 +51,7 @@ Step 2. Add the dependency
 
     
     
-  解释一个各个参数作用
+  解释各个参数作用
 
         arrayRes：注入数组资源
         rightDrawable：箭头图片资源
