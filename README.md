@@ -1,6 +1,6 @@
 # PopupView
 
-![image](https://github.com/wbaizx/PopupView/raw/master/in.png)
+![image](https://github.com/wbaizx/PopupView/raw/master/inmg.png)
 
 
 Add it in your root build.gradle at the end of repositories:
