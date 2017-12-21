@@ -47,6 +47,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     private Drawable popupDrawable;
     private int heightLineWidth;
     private int textViewSize;
+    private int horizontalWidth;
     private int thisdpWidth;
     private int maxNum;
     private int nowPosition = 0;
@@ -110,6 +111,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         }
 
         heightLineWidth = (int) typedArray.getDimension(R.styleable.popup_attr_heightLineWidth, 1);
+        horizontalWidth = (int) typedArray.getDimension(R.styleable.popup_attr_horizontalWidth, 500);
 
         textViewSize = (int) typedArray.getDimension(R.styleable.popup_attr_textViewSize, AndroidUtil.dp2px(getContext(), 20));
         popupview_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, textViewSize);
@@ -159,6 +161,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     private void showPopup() {
         int[] location = new int[2];
         this.getLocationOnScreen(location);
+        int w;
         switch (direction) {
             case 0:
                 popupWindow.setWidth(getWidth());
@@ -171,13 +174,16 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
                 popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0], location[1] - popupWindow.getHeight());
                 break;
             case 2:
-                popupWindow.setWidth(400);
+                w = location[0] > horizontalWidth ? horizontalWidth : location[0];
+                popupWindow.setWidth(w);
                 popupWindow.setAnimationStyle(R.style.dialog_style_left);
-                popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] - 400,
+                popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] - w,
                         location[1] - (popupWindow.getHeight() - getHeight()) / 2);
                 break;
             case 3:
-                popupWindow.setWidth(400);
+                w = location[0] + getWidth() + horizontalWidth < AndroidUtil.getScreenWidth(getContext()) ? horizontalWidth :
+                        AndroidUtil.getScreenWidth(getContext()) - (location[0] + getWidth());
+                popupWindow.setWidth(w);
                 popupWindow.setAnimationStyle(R.style.dialog_style_right);
                 popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] + getWidth(),
                         location[1] - (popupWindow.getHeight() - getHeight()) / 2);
@@ -331,6 +337,10 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     public void setMaxNum(int maxNum) {
         this.maxNum = maxNum;
+    }
+
+    public void setHorizontalWidth(int horizontalWidthDP) {
+        this.horizontalWidth = AndroidUtil.dp2px(getContext(), horizontalWidthDP);
     }
 
     public void setTextViewSize(int dptextViewSize) {
