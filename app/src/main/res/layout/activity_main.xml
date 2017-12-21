@@ -13,6 +13,7 @@
         android:background="@drawable/bg"
         att:arrayRes="@array/test3"
         att:direction="down"
+        att:listItemMinHeight="50dp"
         att:hideSelected="true"
         att:horizontalWidth="200dp"
         att:menuRes="@menu/test2"

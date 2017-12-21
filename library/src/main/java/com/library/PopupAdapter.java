@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.Map;
 public class PopupAdapter extends BaseAdapter {
     private List<Map<String, Object>> list;
     private Context context;
+    private int listItemMinHeight;
 
     public PopupAdapter(Context context, List<Map<String, Object>> list) {
         this.context = context;
@@ -48,6 +50,8 @@ public class PopupAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.popupview_item_img = view.findViewById(R.id.popupview_item_img);
             viewHolder.popupview_item_text = view.findViewById(R.id.popupview_item_text);
+            viewHolder.popupview_item_layout = view.findViewById(R.id.popupview_item_layout);
+            viewHolder.popupview_item_layout.setMinimumHeight(listItemMinHeight);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -69,9 +73,14 @@ public class PopupAdapter extends BaseAdapter {
         return view;
     }
 
+    public void setListItemMinHeight(int listItemMinHeight) {
+        this.listItemMinHeight = listItemMinHeight;
+    }
+
 
     static class ViewHolder {
         ImageView popupview_item_img;
         TextView popupview_item_text;
+        LinearLayout popupview_item_layout;
     }
 }

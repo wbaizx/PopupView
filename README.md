@@ -33,10 +33,12 @@ Step 2. Add the dependency
         att:hideSelected="false"
         att:horizontalWidth="200dp"
         att:maxNum="5"
+        att:listItemMinHeight="50dp"
         att:menuRes="@menu/a1"
         att:textViewSize="20dp"
         att:needDivider="false"
         att:popupDrawable="@drawable/pd"></com.library.PopupView>
+
     
     
   解释一个各个参数作用
@@ -52,8 +54,9 @@ Step 2. Add the dependency
         popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
         textViewSize：PopupView字体大小，控件宽度能根据大小自适应，若在代码中使用set方法设置，则控件大小不能对应改变
         horizontalWidth：水平方向弹出时弹出框宽度
-  
-  xml中的各种参数设置同样都可以在代码中完成，介绍一下代码中的不同地方
+        listItemMinHeight：item布局最小高度，不会低于38dp
+
+  xml中的各种参数设置同样都可以在代码中完成（如果没有对应set方法，就是我忘了），介绍一下代码中的不同地方
 
   注入数据有三种方式：
 

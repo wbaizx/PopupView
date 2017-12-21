@@ -5,6 +5,7 @@
         <attr name="heightLineWidth" format="dimension"></attr>
         <attr name="textViewSize" format="dimension"></attr>
         <attr name="horizontalWidth" format="dimension"></attr>
+        <attr name="listItemMinHeight" format="dimension"></attr>
         <attr name="popupDrawable" format="reference"></attr>
         <attr name="rightDrawable" format="reference"></attr>
         <attr name="menuRes" format="reference"></attr>

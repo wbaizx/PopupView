@@ -49,6 +49,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     private int textViewSize;
     private int horizontalWidth;
     private int thisdpWidth;
+    private int listItemMinHeight;
     private int maxNum;
     private int nowPosition = 0;
     private int direction;
@@ -111,6 +112,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         }
 
         heightLineWidth = (int) typedArray.getDimension(R.styleable.popup_attr_heightLineWidth, 1);
+
+        listItemMinHeight = (int) typedArray.getDimension(R.styleable.popup_attr_listItemMinHeight, AndroidUtil.dp2px(getContext(), 38));
 
         horizontalWidth = (int) typedArray.getDimension(R.styleable.popup_attr_horizontalWidth, 500);
 
@@ -213,6 +216,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     private void initPopupWindow() {
         popupAdapter = new PopupAdapter(getContext(), temporaryList);
+        popupAdapter.setListItemMinHeight(listItemMinHeight);
         ListView listView = new ListView(getContext());
         if (!needDivider) {
             listView.setDivider(null);
@@ -232,8 +236,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         popupWindow.setBackgroundDrawable(popupDrawable);
 
         if ((maxNum > 0) && (maxNum < list.size())) {
-            //38控件高度 + 2paddingTop
-            popupWindow.setHeight(maxNum * (AndroidUtil.dp2px(getContext(), (float) 40) + listView.getDividerHeight()) - listView.getDividerHeight());
+            popupWindow.setHeight(maxNum * (listItemMinHeight + listView.getDividerHeight()) - listView.getDividerHeight());
         } else {
             popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         }
