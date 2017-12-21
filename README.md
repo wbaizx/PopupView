@@ -25,6 +25,7 @@ Step 2. Add the dependency
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        att:menuRes="@menu/test2"
         android:background="@drawable/bg"
         ></com.library.PopupView>
 
