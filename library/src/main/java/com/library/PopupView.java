@@ -201,15 +201,14 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     }
 
     private void setTemporaryList() {
-        temporaryList.clear();
         if (hideSelected) {
-            for (int i = 0; i < list.size(); i++) {
-                if (i != nowPosition) {
-                    temporaryList.add(list.get(i));
-                }
-            }
-        } else {
+            temporaryList.clear();
             temporaryList.addAll(list);
+            temporaryList.remove(nowPosition);
+        } else {
+            if (temporaryList.isEmpty()) {
+                temporaryList.addAll(list);
+            }
         }
         popupAdapter.notifyDataSetChanged();
     }
