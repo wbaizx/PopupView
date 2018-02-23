@@ -17,7 +17,7 @@ Step 1：
 Step 2：
 
 	dependencies {
-	        compile 'com.github.wbaizx:PopupView:1.0.5'
+	        compile 'com.github.wbaizx:PopupView:1.0.6'
 	}
 
 
