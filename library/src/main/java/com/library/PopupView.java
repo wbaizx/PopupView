@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.MenuRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
@@ -49,7 +50,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     private int textViewSize;
     private int horizontalWidth;
     private int thisdpWidth;
-    private int listItemMinHeight;
+    private int listItemHeight;
+    private int itemFontSize;
     private int maxNum;
     private int nowPosition = 0;
     private int direction;
@@ -113,7 +115,9 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
         heightLineWidth = (int) typedArray.getDimension(R.styleable.popup_attr_heightLineWidth, 1);
 
-        listItemMinHeight = (int) typedArray.getDimension(R.styleable.popup_attr_listItemMinHeight, AndroidUtil.dp2px(getContext(), 38));
+        listItemHeight = (int) typedArray.getDimension(R.styleable.popup_attr_listItemHeight, AndroidUtil.dp2px(getContext(), 30));
+
+        itemFontSize = (int) typedArray.getDimension(R.styleable.popup_attr_itemFontSize, AndroidUtil.dp2px(getContext(), 15));
 
         horizontalWidth = (int) typedArray.getDimension(R.styleable.popup_attr_horizontalWidth, 500);
 
@@ -215,7 +219,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     private void initPopupWindow() {
         popupAdapter = new PopupAdapter(getContext(), temporaryList);
-        popupAdapter.setListItemMinHeight(listItemMinHeight);
+        popupAdapter.setFontsize(itemFontSize);
+        popupAdapter.setListItemHeight(listItemHeight);
         ListView listView = new ListView(getContext());
         if (!needDivider) {
             listView.setDivider(null);
@@ -231,11 +236,13 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         popupWindow = new PopupWindow(listView, getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setOnDismissListener(this);
-        popupWindow.setElevation(15);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            popupWindow.setElevation(15);
+        }
         popupWindow.setBackgroundDrawable(popupDrawable);
 
         if ((maxNum > 0) && (maxNum < list.size())) {
-            popupWindow.setHeight(maxNum * (listItemMinHeight + listView.getDividerHeight()) - listView.getDividerHeight());
+            popupWindow.setHeight(maxNum * (listItemHeight + listView.getDividerHeight()) - listView.getDividerHeight());
         } else {
             popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         }

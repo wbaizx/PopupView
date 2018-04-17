@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         popup = findViewById(R.id.popup);
 
-        popup.setMaxNum(5);
-
         popup.setOnDismissListener(new OnDismissListener() {
             @Override
             public void onDismissListener() {

@@ -2,6 +2,7 @@ package com.library;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,8 @@ import java.util.Map;
 public class PopupAdapter extends BaseAdapter {
     private List<Map<String, Object>> list;
     private Context context;
-    private int listItemMinHeight;
+    private int listItemHeight;
+    private int fontsize;
 
     public PopupAdapter(Context context, List<Map<String, Object>> list) {
         this.context = context;
@@ -50,8 +52,13 @@ public class PopupAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.popupview_item_img = view.findViewById(R.id.popupview_item_img);
             viewHolder.popupview_item_text = view.findViewById(R.id.popupview_item_text);
-            viewHolder.popupview_item_layout = view.findViewById(R.id.popupview_item_layout);
-            viewHolder.popupview_item_layout.setMinimumHeight(listItemMinHeight);
+            viewHolder.popupview_item_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontsize);
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) viewHolder.popupview_item_text.getLayoutParams();
+            layoutParams.height = listItemHeight;
+            viewHolder.popupview_item_text.setLayoutParams(layoutParams);
+            LinearLayout.LayoutParams layoutParams1 = (LinearLayout.LayoutParams) viewHolder.popupview_item_img.getLayoutParams();
+            layoutParams1.height = listItemHeight;
+            viewHolder.popupview_item_img.setLayoutParams(layoutParams1);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -73,14 +80,17 @@ public class PopupAdapter extends BaseAdapter {
         return view;
     }
 
-    public void setListItemMinHeight(int listItemMinHeight) {
-        this.listItemMinHeight = listItemMinHeight;
+    public void setListItemHeight(int listItemHeight) {
+        this.listItemHeight = listItemHeight;
+    }
+
+    public void setFontsize(int fontsize) {
+        this.fontsize = fontsize;
     }
 
 
     static class ViewHolder {
         ImageView popupview_item_img;
         TextView popupview_item_text;
-        LinearLayout popupview_item_layout;
     }
 }

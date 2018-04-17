@@ -13,9 +13,11 @@
         android:background="@drawable/bg"
         att:arrayRes="@array/test3"
         att:direction="down"
-        att:listItemMinHeight="40dp"
         att:hideSelected="true"
         att:horizontalWidth="200dp"
+        att:itemFontSize="10dp"
+        att:listItemHeight="50dp"
+        att:maxNum="3"
         att:menuRes="@menu/test2"
         att:needDivider="false"
         att:textViewSize="20dp"></com.library.PopupView>
