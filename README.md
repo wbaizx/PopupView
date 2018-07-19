@@ -42,6 +42,8 @@ Step 2：
         att:arrayRes="@array/test3"
         att:direction="down"
         att:heightLineWidth="5dp"
+        att:popupDrawable="@drawable/a"
+        att:rightDrawable="@drawable/b"
         att:hideSelected="false"
         att:horizontalWidth="200dp"
         att:itemFontSize="12sp"
@@ -53,6 +55,7 @@ Step 2：
         att:menuRes="@menu/test2"
         att:needDivider="true"
         att:textViewSize="15sp" />
+
 
 
   解释各个参数作用
