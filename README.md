@@ -17,7 +17,7 @@ Step 1：
 Step 2：
 
 	dependencies {
-	        compile 'com.github.wbaizx:PopupView:1.2.1'
+	        compile 'com.github.wbaizx:PopupView:1.2.2'
 	}
 
 
@@ -49,13 +49,13 @@ Step 2：
         att:itemFontSize="12sp"
         att:itemTextColor="@color/colorPrimary"
         att:itemTextGravity="left"
+        att:popupTextColor="#f90606"
         att:itemTextSelectColor="#FF4081"
         att:listItemHeight="50dp"
         att:maxNum="4"
         att:menuRes="@menu/test2"
         att:needDivider="true"
         att:textViewSize="15sp" />
-
 
 
   解释各个参数作用
@@ -75,7 +75,7 @@ Step 2：
         horizontalWidth：水平方向弹出时弹出框宽度
         itemTextGravity：弹出框字体对齐方式
         itemTextSelectColor：弹出框选中项字体颜色
-        listItemHeight：弹出框未选中项字体颜色
+        popupTextColor：popup字体颜色
 
   xml中的各种参数设置一般都可以在代码中完成（如果没有对应set方法，就是我忘了），介绍一下代码中的不同地方
 

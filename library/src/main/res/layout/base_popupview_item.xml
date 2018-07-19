@@ -23,6 +23,7 @@
         android:layout_marginStart="2dp"
         android:layout_weight="3"
         android:ellipsize="end"
+        android:maxLines="1"
         android:textSize="20dp"
         tools:text="--------------------" />
 </LinearLayout>

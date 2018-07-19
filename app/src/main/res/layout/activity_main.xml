@@ -23,6 +23,6 @@
         att:maxNum="4"
         att:menuRes="@menu/test2"
         att:needDivider="true"
+        att:popupTextColor="#f90606"
         att:textViewSize="15sp" />
-
 </RelativeLayout>

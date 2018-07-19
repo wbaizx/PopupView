@@ -208,6 +208,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         itemTextSelectColor = typedArray.getColor(R.styleable.PopupView_itemTextSelectColor, 0x8a000000);
         //item字体未选中颜色
         itemTextColor = typedArray.getColor(R.styleable.PopupView_itemTextColor, 0x8a000000);
+        //设置popup字体颜色
+        popupview_text.setTextColor(typedArray.getColor(R.styleable.PopupView_popupTextColor, 0x8a000000));
 
         typedArray.recycle();
     }
@@ -512,6 +514,10 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     public void setItemFontSize(int itemFontSize) {
         this.itemFontSize = itemFontSize;
+    }
+
+    public void setPopupTextColor(int color) {
+        popupview_text.setTextColor(color);
     }
 
     public void setTextViewSize(int dptextViewSize) {

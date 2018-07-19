@@ -11,6 +11,7 @@
         <attr name="rightDrawable" format="reference" />
         <attr name="itemTextSelectColor" format="color" />
         <attr name="itemTextColor" format="color" />
+        <attr name="popupTextColor" format="color" />
         <attr name="itemTextGravity">
             <flag name="centre" value="1" />
             <flag name="left" value="2" />

@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         popup = findViewById(R.id.popup);
+
         popup.setOnItemClickListener(new OnPopupItemClickListener() {
             @Override
             public void onItemClickListener(int id, int position, String title) {
