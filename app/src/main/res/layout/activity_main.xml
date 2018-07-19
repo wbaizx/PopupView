@@ -10,16 +10,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/bg"
         att:arrayRes="@array/test3"
         att:direction="down"
-        att:hideSelected="true"
+        att:heightLineWidth="5dp"
+        att:hideSelected="false"
         att:horizontalWidth="200dp"
-        att:itemFontSize="10dp"
+        att:itemFontSize="12sp"
+        att:itemTextColor="@color/colorPrimary"
+        att:itemTextGravity="left"
+        att:itemTextSelectColor="#FF4081"
         att:listItemHeight="50dp"
-        att:maxNum="3"
+        att:maxNum="4"
         att:menuRes="@menu/test2"
-        att:needDivider="false"
-        att:textViewSize="20dp"></com.library.PopupView>
+        att:needDivider="true"
+        att:textViewSize="15sp" />
 
 </RelativeLayout>

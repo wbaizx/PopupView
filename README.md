@@ -17,7 +17,7 @@ Step 1：
 Step 2：
 
 	dependencies {
-	        compile 'com.github.wbaizx:PopupView:1.1.0'
+	        compile 'com.github.wbaizx:PopupView:1.2.1'
 	}
 
 
@@ -29,9 +29,7 @@ Step 2：
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         att:menuRes="@menu/test2"
-        att:listItemHeight="40dp"
-        android:background="@drawable/bg"
-        ></com.library.PopupView>
+        att:listItemHeight="40dp"/>
 
 
 其他参数用法：
@@ -41,20 +39,20 @@ Step 2：
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/bg"
-        att:arrayRes="@array/ar"
-        att:rightDrawable="@drawable/ad"
+        att:arrayRes="@array/test3"
         att:direction="down"
-        att:itemFontSize="15dp"
-        att:heightLineWidth="0.5dp"
+        att:heightLineWidth="5dp"
         att:hideSelected="false"
         att:horizontalWidth="200dp"
-        att:maxNum="5"
-        att:listItemHeight="40dp"
-        att:menuRes="@menu/a1"
-        att:textViewSize="20dp"
-        att:needDivider="false"
-        att:popupDrawable="@drawable/pd"></com.library.PopupView>
+        att:itemFontSize="12sp"
+        att:itemTextColor="@color/colorPrimary"
+        att:itemTextGravity="left"
+        att:itemTextSelectColor="#FF4081"
+        att:listItemHeight="50dp"
+        att:maxNum="4"
+        att:menuRes="@menu/test2"
+        att:needDivider="true"
+        att:textViewSize="15sp" />
 
 
   解释各个参数作用
@@ -72,8 +70,11 @@ Step 2：
         popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
         textViewSize：PopupView字体大小，控件宽度能根据大小自适应，若在代码中使用set方法设置，则控件大小不能对应改变
         horizontalWidth：水平方向弹出时弹出框宽度
+        itemTextGravity：弹出框字体对齐方式
+        itemTextSelectColor：弹出框选中项字体颜色
+        listItemHeight：弹出框未选中项字体颜色
 
-  xml中的各种参数设置同样都可以在代码中完成（如果没有对应set方法，就是我忘了），介绍一下代码中的不同地方
+  xml中的各种参数设置一般都可以在代码中完成（如果没有对应set方法，就是我忘了），介绍一下代码中的不同地方
 
   注入数据有三种方式：
 
@@ -104,6 +105,11 @@ Step 2：
   获取当前选中位置文本
 
         popup.getNowText();
+
+
+  清空当前设置的数据，然后可以重新添加数据，用于更新
+
+        popup.clearData();
 
   设置点击监听，返回值如果对应项有id则返回对应id，没有返回-1，position表示在数据中的索引，title表示对应文本信息
 
