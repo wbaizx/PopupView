@@ -75,6 +75,7 @@ Step 2：
         horizontalWidth：水平方向弹出时弹出框宽度
         itemTextGravity：弹出框字体对齐方式
         itemTextSelectColor：弹出框选中项字体颜色
+        itemTextColor：弹出框未选中项字体颜色
         popupTextColor：popup字体颜色
 
   xml中的各种参数设置一般都可以在代码中完成（如果没有对应set方法，就是我忘了），介绍一下代码中的不同地方
