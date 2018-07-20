@@ -17,7 +17,7 @@ Step 1：
 Step 2：
 
 	dependencies {
-	        compile 'com.github.wbaizx:PopupView:1.2.2'
+	        compile 'com.github.wbaizx:PopupView:1.2.3'
 	}
 
 
@@ -41,7 +41,7 @@ Step 2：
         android:layout_centerInParent="true"
         att:arrayRes="@array/test3"
         att:direction="down"
-        att:heightLineWidth="5dp"
+        att:dividerHeight="5dp"
         att:popupDrawable="@drawable/a"
         att:rightDrawable="@drawable/b"
         att:hideSelected="false"
@@ -60,13 +60,13 @@ Step 2：
 
   解释各个参数作用
 
-        listItemHeight：item布局高度，必须设置
+        listItemHeight：item布局高度，可以不设置
+        maxNum：最大显示行数，只有设置了listItemHeight才能生效
         arrayRes：注入数组资源
         rightDrawable：箭头图片资源
         direction：弹出方向
-        heightLineWidth：分割线高度
+        dividerHeight：分割线高度
         hideSelected：是否隐藏当前选中项，默认false
-        maxNum：最大显示行数，默认包含屏幕能容纳所有
         menuRes：menu资源注入
         itemFontSize：item字体大小
         needDivider：是否需要分割线，默认true

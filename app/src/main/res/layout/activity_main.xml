@@ -12,17 +12,17 @@
         android:layout_centerInParent="true"
         att:arrayRes="@array/test3"
         att:direction="down"
-        att:heightLineWidth="5dp"
+        att:dividerHeight="5dp"
         att:hideSelected="false"
         att:horizontalWidth="200dp"
-        att:itemFontSize="12sp"
+        att:itemFontSize="18sp"
         att:itemTextColor="@color/colorPrimary"
         att:itemTextGravity="left"
         att:itemTextSelectColor="#FF4081"
-        att:listItemHeight="50dp"
-        att:maxNum="4"
+        att:listItemHeight="40dp"
+        att:maxNum="3"
         att:menuRes="@menu/test2"
         att:needDivider="true"
         att:popupTextColor="#f90606"
-        att:textViewSize="15sp" />
+        att:textViewSize="20sp" />
 </RelativeLayout>

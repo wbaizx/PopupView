@@ -66,7 +66,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     /**
      * 分割线高度
      */
-    private int heightLineWidth;
+    private int dividerHeight;
     /**
      * PopupView字体大小
      */
@@ -78,7 +78,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     /**
      * 控件宽度
      */
-    private int thisdpWidth;
+    private int thisHeight;
     /**
      * 每个item布局高度
      */
@@ -161,11 +161,10 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             String[] stringArray = getResources().getStringArray(arrayResId);
             setItemsFromList(Arrays.asList(stringArray));
         }
-        //分割线高度，默认1px
-        heightLineWidth = (int) typedArray.getDimension(R.styleable.PopupView_heightLineWidth, 2);
-        //item行高，默认30dp,单位px
-        listItemHeight = (int) typedArray.getDimension(R.styleable.PopupView_listItemHeight,
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics()));
+        //分割线高度，默认2px
+        dividerHeight = (int) typedArray.getDimension(R.styleable.PopupView_dividerHeight, 2);
+        //item行高，默认0dp代表wrap_content,单位px
+        listItemHeight = (int) typedArray.getDimension(R.styleable.PopupView_listItemHeight, 0);
         //item字体大小，默认15sp,单位px
         itemFontSize = (int) typedArray.getDimension(R.styleable.PopupView_itemFontSize,
                 TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 15, getResources().getDisplayMetrics()));
@@ -176,8 +175,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         textViewSize = (int) typedArray.getDimension(R.styleable.PopupView_textViewSize,
                 TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, getResources().getDisplayMetrics()));
         popupview_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, textViewSize);
-        //根据PopupView字体大小设置控件宽度
-        thisdpWidth = (int) (textViewSize * 1.4);
+        //根据PopupView字体大小设置控件高度
+        thisHeight = (int) (textViewSize * 1.4);
         //最大显示项数
         maxNum = typedArray.getInt(R.styleable.PopupView_maxNum, 0);
         //下拉框背景
@@ -228,7 +227,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY) {
             mHeightMeasureSpec = heightMeasureSpec;
         } else {
-            mHeightMeasureSpec = MeasureSpec.makeMeasureSpec(thisdpWidth, MeasureSpec.AT_MOST);
+            mHeightMeasureSpec = MeasureSpec.makeMeasureSpec(thisHeight, MeasureSpec.AT_MOST);
         }
         super.onMeasure(mWidthMeasureSpec, mHeightMeasureSpec);
     }
@@ -265,9 +264,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         ListView listView = new ListView(getContext());
         //是否使用分割线
         if (needDivider) {
-            listView.setDividerHeight(heightLineWidth);
-        } else {
-            listView.setDivider(null);
+            listView.setDividerHeight(dividerHeight);
         }
         //初始化下拉框列表适配器
         popupAdapter = new PopupAdapter(temporaryList);
@@ -299,11 +296,13 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         }
         //设置下拉框背景
         popupWindow.setBackgroundDrawable(popupDrawable);
-        //根据最大显示行数设置popupWindow高度
-        if ((maxNum > 0) && (maxNum < list.size())) {
-            popupWindow.setHeight(maxNum * (listItemHeight + listView.getDividerHeight()) - listView.getDividerHeight());
-        } else {
-            popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        //根据最大显示行数设置popupWindow高度,必须是指定了item高度才可以
+        if (listItemHeight != 0) {
+            if ((maxNum > 0) && (maxNum < list.size())) {
+                popupWindow.setHeight(maxNum * (listItemHeight + listView.getDividerHeight()) - listView.getDividerHeight());
+            } else {
+                popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+            }
         }
     }
 
@@ -496,17 +495,18 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         this.needDivider = needDivider;
     }
 
-    public void setHeightLineWidth(int heightLineWidthDP) {
-        this.heightLineWidth = heightLineWidthDP;
+    public void setDividerHeight(int dividerHeight) {
+        this.dividerHeight = dividerHeight;
+    }
+
+    public void setHorizontalWidth(int horizontalWidth) {
+        this.horizontalWidth = horizontalWidth;
     }
 
     public void setMaxNum(int maxNum) {
         this.maxNum = maxNum;
     }
 
-    public void setHorizontalWidth(int horizontalWidthDP) {
-        this.horizontalWidth = horizontalWidthDP;
-    }
 
     public void setListItemHeight(int listItemHeight) {
         this.listItemHeight = listItemHeight;

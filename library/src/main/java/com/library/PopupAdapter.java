@@ -74,8 +74,10 @@ public class PopupAdapter extends BaseAdapter {
             viewHolder.popupview_item_text = view.findViewById(R.id.popupview_item_text);
             viewHolder.popupview_item_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontsize);
             viewHolder.popupview_item_text.setGravity(itemTextGravity);
-            AbsListView.LayoutParams layoutParams = (AbsListView.LayoutParams) view.getLayoutParams();
-            layoutParams.height = listItemHeight;
+            if (listItemHeight != 0) {
+                AbsListView.LayoutParams layoutParams = (AbsListView.LayoutParams) view.getLayoutParams();
+                layoutParams.height = listItemHeight;
+            }
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
