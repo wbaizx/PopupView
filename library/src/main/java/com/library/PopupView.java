@@ -176,7 +176,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
                 TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, getResources().getDisplayMetrics()));
         popupview_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, textViewSize);
         //根据PopupView字体大小设置控件高度
-        thisHeight = (int) (textViewSize * 1.4);
+        thisHeight = (int) (textViewSize * 1.5);
         //最大显示项数
         maxNum = typedArray.getInt(R.styleable.PopupView_maxNum, 0);
         //下拉框背景

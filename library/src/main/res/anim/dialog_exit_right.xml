@@ -6,6 +6,5 @@
     android:interpolator="@android:anim/decelerate_interpolator"
     android:pivotX="0%"
     android:pivotY="50%"
-    android:startOffset="0"
     android:toXScale="0"
     android:toYScale="1" />
