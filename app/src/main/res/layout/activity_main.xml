@@ -20,7 +20,6 @@
         att:itemTextGravity="left"
         att:itemTextSelectColor="#FF4081"
         att:listItemHeight="40dp"
-        att:maxNum="3"
         att:menuRes="@menu/test2"
         att:needDivider="true"
         att:popupTextColor="#f90606"
