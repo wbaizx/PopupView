@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -38,11 +39,15 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     /**
      * popup text
      */
-    private TextView popupview_text;
+    private TextView popupViewText;
     /**
      * popup img
      */
-    private ImageView popupview_img;
+    private ImageView popupViewImg;
+    /**
+     * popup listView
+     */
+    private ListView listView;
     /**
      * 真正的弹出框PopupWindow
      */
@@ -120,6 +125,19 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
      */
     private boolean hideSelected;
 
+    /**
+     * 弹出框高度
+     */
+    private int popupHeight;
+    /**
+     * 弹出框宽度
+     */
+    private int popupWidth;
+    /**
+     * 弹出框输入框相对屏幕坐标
+     */
+    private int[] location;
+
 
     private OnPopupItemClickListener onPopupItemClickListener;
     private OnDismissListener onDismissListener;
@@ -140,8 +158,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     private void init(AttributeSet attrs) {
         //加载布局
         LayoutInflater.from(getContext()).inflate(R.layout.base_popupview, this, true);
-        popupview_text = findViewById(R.id.popupview_text);
-        popupview_img = findViewById(R.id.popupview_img);
+        popupViewText = findViewById(R.id.popupview_text);
+        popupViewImg = findViewById(R.id.popupview_img);
 
         list = new ArrayList<>();
         temporaryList = new ArrayList<>();
@@ -174,7 +192,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         //PopupView字体大小，默认20sp,单位px
         textViewSize = (int) typedArray.getDimension(R.styleable.PopupView_textViewSize,
                 TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, getResources().getDisplayMetrics()));
-        popupview_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, textViewSize);
+        popupViewText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textViewSize);
         //根据PopupView字体大小设置控件高度
         thisHeight = (int) (textViewSize * 1.5);
         //最大显示项数
@@ -191,9 +209,9 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         }
         //下拉图标
         if (typedArray.getDrawable(R.styleable.PopupView_rightDrawable) != null) {
-            popupview_img.setImageDrawable(typedArray.getDrawable(R.styleable.PopupView_rightDrawable));
+            popupViewImg.setImageDrawable(typedArray.getDrawable(R.styleable.PopupView_rightDrawable));
         } else {
-            popupview_img.setImageDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.popup_down));
+            popupViewImg.setImageDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.popup_down));
         }
         //是否需要分割线
         needDivider = typedArray.getBoolean(R.styleable.PopupView_needDivider, true);
@@ -208,7 +226,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         //item字体未选中颜色
         itemTextColor = typedArray.getColor(R.styleable.PopupView_itemTextColor, 0x8a000000);
         //设置popup字体颜色
-        popupview_text.setTextColor(typedArray.getColor(R.styleable.PopupView_popupTextColor, 0x8a000000));
+        popupViewText.setTextColor(typedArray.getColor(R.styleable.PopupView_popupTextColor, 0x8a000000));
 
         typedArray.recycle();
     }
@@ -251,7 +269,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             //每次展开前设置临时数据
             setTemporaryList();
             //下拉图片翻转动画
-            ObjectAnimator.ofFloat(popupview_img, "rotation", 0, 180).setDuration(100).start();
+            ObjectAnimator.ofFloat(popupViewImg, "rotation", 0, 180).setDuration(100).start();
             //展开popup
             showPopup();
         }
@@ -261,7 +279,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
      * 初始化PopupWindow
      */
     private void initPopupWindow() {
-        ListView listView = new ListView(getContext());
+        listView = new ListView(getContext());
         //是否使用分割线
         if (needDivider) {
             listView.setDividerHeight(dividerHeight);
@@ -296,14 +314,33 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         }
         //设置下拉框背景
         popupWindow.setBackgroundDrawable(popupDrawable);
-        //根据最大显示行数设置popupWindow高度,必须是指定了item高度才可以
-        if (listItemHeight != 0) {
-            if ((maxNum > 0) && (maxNum < list.size())) {
-                popupWindow.setHeight(maxNum * (listItemHeight + listView.getDividerHeight()) - listView.getDividerHeight());
-            } else {
-                popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-            }
+
+        location = new int[2];
+        this.getLocationInWindow(location);
+
+        //根据弹出方向设置宽度
+        switch (direction) {
+            case 0:
+                popupWidth = getWidth();
+                popupWindow.setAnimationStyle(R.style.dialog_style_down);
+                break;
+            case 1:
+                popupWidth = getWidth();
+                popupWindow.setAnimationStyle(R.style.dialog_style_up);
+                break;
+            case 2:
+                popupWidth = location[0] > horizontalWidth ? horizontalWidth : location[0];
+                popupWindow.setAnimationStyle(R.style.dialog_style_left);
+                break;
+            case 3:
+                popupWidth = location[0] + getWidth() + horizontalWidth < getScreenWidth() ? horizontalWidth :
+                        getScreenWidth() - (location[0] + getWidth());
+                popupWindow.setAnimationStyle(R.style.dialog_style_right);
+                break;
+            default:
+                popupWidth = getWidth();
         }
+        popupWindow.setWidth(popupWidth);
     }
 
     /**
@@ -327,41 +364,92 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
      * 判断方向，展开popup
      */
     private void showPopup() {
-        int[] location = new int[2];
-        this.getLocationOnScreen(location);
-        int w;
         switch (direction) {
             case 0:
-                popupWindow.setWidth(getWidth());
-                popupWindow.setAnimationStyle(R.style.dialog_style_down);
+                setPopupHeightDown();
                 popupWindow.showAsDropDown(this);
                 break;
             case 1:
-                popupWindow.setWidth(getWidth());
-                popupWindow.setAnimationStyle(R.style.dialog_style_up);
+                setPopupHeightUp();
                 popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0], location[1] - popupWindow.getHeight());
                 break;
             case 2:
-                w = location[0] > horizontalWidth ? horizontalWidth : location[0];
-                popupWindow.setWidth(w);
-                popupWindow.setAnimationStyle(R.style.dialog_style_left);
-                popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] - w,
+                setPopupHeightLeftAndRight();
+                popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] - popupWidth,
                         location[1] - (popupWindow.getHeight() - getHeight()) / 2);
                 break;
             case 3:
-                w = location[0] + getWidth() + horizontalWidth < getScreenWidth(getContext()) ? horizontalWidth :
-                        getScreenWidth(getContext()) - (location[0] + getWidth());
-                popupWindow.setWidth(w);
-                popupWindow.setAnimationStyle(R.style.dialog_style_right);
+                setPopupHeightLeftAndRight();
                 popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, location[0] + getWidth(),
                         location[1] - (popupWindow.getHeight() - getHeight()) / 2);
                 break;
             default:
-                popupWindow.setWidth(getWidth());
-                popupWindow.setAnimationStyle(R.style.dialog_style_down);
-                popupWindow.showAsDropDown(this);
-                break;
         }
+    }
+
+    private void setPopupHeightLeftAndRight() {
+        if (listItemHeight != 0) {
+            popupHeight = setHaveItemHeight();
+        } else {
+            popupHeight = getListHeight();
+        }
+        popupWindow.setHeight((int) Math.min(popupHeight,
+                location[1] - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, getResources().getDisplayMetrics())));
+    }
+
+    private void setPopupHeightUp() {
+        if (listItemHeight != 0) {
+            popupHeight = setHaveItemHeight();
+        } else {
+            popupHeight = getListHeight();
+        }
+        popupWindow.setHeight((int) Math.min(popupHeight,
+                location[1] - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, getResources().getDisplayMetrics())));
+    }
+
+    private void setPopupHeightDown() {
+        if (listItemHeight != 0) {
+            popupHeight = setHaveItemHeight();
+            popupWindow.setHeight(Math.min(popupHeight, getScreenHeight() - (location[1] + getHeight())));
+        } else {
+            popupHeight = ViewGroup.LayoutParams.WRAP_CONTENT;
+        }
+    }
+
+    /**
+     * 当设置了listItemHeight时候计算高度
+     */
+    private int setHaveItemHeight() {
+        if ((maxNum > 0) && (maxNum < list.size())) {
+            return maxNum * (listItemHeight + listView.getDividerHeight()) - listView.getDividerHeight();
+        } else {
+            if (hideSelected) {
+                return (list.size() - 1) * (listItemHeight + listView.getDividerHeight()) - listView.getDividerHeight();
+            } else {
+                return list.size() * (listItemHeight + listView.getDividerHeight()) - listView.getDividerHeight();
+            }
+        }
+    }
+
+    /**
+     * 动态计算高度
+     */
+    private int getListHeight() {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            return 0;
+        }
+        int totalHeight = 0;
+        int widthSpec = View.MeasureSpec.makeMeasureSpec(getWidth(), View.MeasureSpec.AT_MOST);
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(widthSpec, 0);
+
+            int itemHeight = listItem.getMeasuredHeight();
+            totalHeight += itemHeight;
+        }
+        // 减掉底部分割线的高度
+        return totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
     }
 
     /**
@@ -382,7 +470,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
     @Override
     public void onDismiss() {
-        ObjectAnimator.ofFloat(popupview_img, "rotation", 180, 360).setDuration(100).start();
+        ObjectAnimator.ofFloat(popupViewImg, "rotation", 180, 360).setDuration(100).start();
         if (onDismissListener != null) {
             onDismissListener.onDismissListener();
         }
@@ -394,7 +482,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     public void setPostion(int position) {
         nowPosition = position;
         if (position < list.size()) {
-            popupview_text.setText((String) list.get(position).get(Key.TITLE));
+            popupViewText.setText((String) list.get(position).get(Key.TITLE));
             //需要通知adapter
             if (!hideSelected) {
                 popupAdapter.setPosition(nowPosition);
@@ -417,7 +505,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             map.put(Key.ID, item.getItemId());
             list.add(map);
         }
-        popupview_text.setText((String) list.get(0).get(Key.TITLE));
+        popupViewText.setText((String) list.get(0).get(Key.TITLE));
     }
 
     /**
@@ -431,7 +519,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             map.put(Key.ID, -1);
             list.add(map);
         }
-        popupview_text.setText((String) list.get(0).get(Key.TITLE));
+        popupViewText.setText((String) list.get(0).get(Key.TITLE));
     }
 
     /**
@@ -443,7 +531,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         map.put(Key.IMG, poputItem.getImage());
         map.put(Key.ID, poputItem.getId());
         list.add(map);
-        popupview_text.setText((String) list.get(0).get(Key.TITLE));
+        popupViewText.setText((String) list.get(0).get(Key.TITLE));
     }
 
     /**
@@ -488,7 +576,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     }
 
     public void setRightDrawable(Drawable rightDrawable) {
-        popupview_img.setImageDrawable(rightDrawable);
+        popupViewImg.setImageDrawable(rightDrawable);
     }
 
     public void setNeedDivider(boolean needDivider) {
@@ -517,11 +605,11 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     }
 
     public void setPopupTextColor(int color) {
-        popupview_text.setTextColor(color);
+        popupViewText.setTextColor(color);
     }
 
     public void setTextViewSize(int dptextViewSize) {
-        popupview_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, dptextViewSize);
+        popupViewText.setTextSize(TypedValue.COMPLEX_UNIT_PX, dptextViewSize);
     }
 
     public void setDirection(int direction) {
@@ -531,7 +619,14 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     /**
      * 获取屏幕宽度
      */
-    public int getScreenWidth(Context context) {
-        return context.getResources().getDisplayMetrics().widthPixels;
+    public int getScreenWidth() {
+        return getContext().getResources().getDisplayMetrics().widthPixels;
+    }
+
+    /**
+     * 获取屏幕高度
+     */
+    public int getScreenHeight() {
+        return getContext().getResources().getDisplayMetrics().heightPixels;
     }
 }

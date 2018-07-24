@@ -70,7 +70,7 @@ Step 2：
         menuRes：menu资源注入
         itemFontSize：item字体大小
         needDivider：是否需要分割线，默认true
-        popupDrawable：下拉菜单背景，注意设置此项后弹出框阴影消失
+        popupDrawable：下拉菜单背景，注意设置此项后可能弹出框阴影消失
         textViewSize：PopupView字体大小，控件宽度能根据大小自适应，若在代码中使用set方法设置，则控件大小不能对应改变
         horizontalWidth：水平方向弹出时弹出框宽度
         itemTextGravity：弹出框字体对齐方式
