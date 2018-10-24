@@ -163,6 +163,8 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
 
         list = new ArrayList<>();
         temporaryList = new ArrayList<>();
+        //初始化下拉框列表适配器
+        popupAdapter = new PopupAdapter(temporaryList);
 
         setOnClickListener(this);
 
@@ -284,8 +286,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         if (needDivider) {
             listView.setDividerHeight(dividerHeight);
         }
-        //初始化下拉框列表适配器
-        popupAdapter = new PopupAdapter(temporaryList);
+        //初始化下拉框列表适配器参数
         popupAdapter.setFontsize(itemFontSize);
         popupAdapter.setListItemHeight(listItemHeight);
         popupAdapter.setItemTextColor(itemTextColor);
