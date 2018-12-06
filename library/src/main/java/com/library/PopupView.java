@@ -178,7 +178,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         //array id
         int arrayResId = typedArray.getResourceId(R.styleable.PopupView_arrayRes, 0);
         if (arrayResId != 0) {
-            String[] stringArray = getResources().getStringArray(arrayResId);
+            CharSequence[] stringArray = getResources().getStringArray(arrayResId);
             setItemsFromList(Arrays.asList(stringArray));
         }
         //分割线高度，默认2px
@@ -464,7 +464,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             i++;
         }
         if (onPopupItemClickListener != null) {
-            onPopupItemClickListener.onItemClickListener((int) list.get(i).get(Key.ID), i, (String) list.get(i).get(Key.TITLE));
+            onPopupItemClickListener.onItemClickListener((int) list.get(i).get(Key.ID), i, (CharSequence) list.get(i).get(Key.TITLE));
         }
         setPostion(i);
     }
@@ -483,7 +483,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
     public void setPostion(int position) {
         nowPosition = position;
         if (position < list.size()) {
-            popupViewText.setText((String) list.get(position).get(Key.TITLE));
+            popupViewText.setText((CharSequence) list.get(position).get(Key.TITLE));
             //需要通知adapter
             if (!hideSelected) {
                 popupAdapter.setPosition(nowPosition);
@@ -506,13 +506,13 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             map.put(Key.ID, item.getItemId());
             list.add(map);
         }
-        popupViewText.setText((String) list.get(0).get(Key.TITLE));
+        popupViewText.setText((CharSequence) list.get(0).get(Key.TITLE));
     }
 
     /**
      * 通过List<String>设置数据
      */
-    public void setItemsFromList(List<String> stringList) {
+    public void setItemsFromList(List<CharSequence> stringList) {
         for (int i = 0; i < stringList.size(); i++) {
             Map<String, Object> map = new HashMap<>(3);
             map.put(Key.TITLE, stringList.get(i));
@@ -520,7 +520,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
             map.put(Key.ID, -1);
             list.add(map);
         }
-        popupViewText.setText((String) list.get(0).get(Key.TITLE));
+        popupViewText.setText((CharSequence) list.get(0).get(Key.TITLE));
     }
 
     /**
@@ -532,7 +532,7 @@ public class PopupView extends RelativeLayout implements View.OnClickListener, P
         map.put(Key.IMG, poputItem.getImage());
         map.put(Key.ID, poputItem.getId());
         list.add(map);
-        popupViewText.setText((String) list.get(0).get(Key.TITLE));
+        popupViewText.setText((CharSequence) list.get(0).get(Key.TITLE));
     }
 
     /**

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         popup.setOnItemClickListener(new OnPopupItemClickListener() {
             @Override
-            public void onItemClickListener(int id, int position, String title) {
+            public void onItemClickListener(int id, int position, CharSequence title) {
                 Log.e("onItemClickListener", id + "--" + position + "--" + title);
             }
         });

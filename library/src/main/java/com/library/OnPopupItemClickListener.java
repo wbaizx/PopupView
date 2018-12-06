@@ -5,5 +5,5 @@ package com.library;
  */
 
 public interface OnPopupItemClickListener {
-    void onItemClickListener(int id, int position, String title);
+    void onItemClickListener(int id, int position, CharSequence title);
 }

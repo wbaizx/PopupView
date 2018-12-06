@@ -90,7 +90,7 @@ public class PopupAdapter extends BaseAdapter {
         }
 
         if (list.get(i).get(Key.TITLE) != null) {
-            viewHolder.popupview_item_text.setText(String.valueOf(list.get(i).get(Key.TITLE)));
+            viewHolder.popupview_item_text.setText((CharSequence) list.get(i).get(Key.TITLE));
         }
 
         if (list.get(i).get(Key.IMG) != null) {

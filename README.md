@@ -17,7 +17,7 @@ Step 1：
 Step 2：
 
 	dependencies {
-	        implementation 'com.github.wbaizx:PopupView:1.3.2'
+	        implementation 'com.github.wbaizx:PopupView:1.3.3'
 	}
 
 
@@ -92,9 +92,9 @@ Step 2：
   
           popup.setItemsFromMenu(this, R.menu.aaaa);
           
-  通过List<String>列表注入：
+  通过List<CharSequence>列表注入：
   
-        List<String> stringList = new ArrayList<>();
+        List<CharSequence> stringList = new ArrayList<>();
         stringList.add("55");
         popup.setItemsFromList(stringList);
         
@@ -119,7 +119,7 @@ Step 2：
 
         popup.setOnItemClickListener(new OnPopupItemClickListener() {
             @Override
-            public void onItemClickListener(int id, int position, String title) {
+            public void onItemClickListener(int id, int position, CharSequence title) {
             }
         });
         
